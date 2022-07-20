@@ -21,13 +21,12 @@ jobs:
     name: ${{ matrix.name }}
     container: ${{ matrix.docker_image }}
     env:
-      HOME: /opt/action/
-
+      HOME: /home/github/
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: |
-            pip install -r requirements.txt
+            pip install -e .
       - name: Run tools test
         run: |
             bash ./scripts/run_test
