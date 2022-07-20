@@ -28,6 +28,9 @@ jobs:
         run: |
             pip install -e .
       - name: Run tools test
+          run: |
+          pip list
+      - name: Run tools test
         run: |
             bash ./scripts/run_test
       - name: echo context
