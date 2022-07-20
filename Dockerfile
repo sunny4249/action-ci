@@ -27,7 +27,8 @@ RUN apt-get update \
     python3-venv \
     gpg \
     wget \
-    sudo
+    sudo \
+    systemd
 
 RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg && \
     apt-get install apt-transport-https && \
