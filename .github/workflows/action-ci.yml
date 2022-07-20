@@ -28,6 +28,8 @@ jobs:
             pwd
       - name: Install dependencies
         run: |
+            pip install --upgrade pip
+            pip install --upgrade setuptools
             pip install -e .
       - name: Run pip list
         run: |
