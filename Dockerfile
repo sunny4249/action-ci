@@ -22,11 +22,18 @@ RUN apt-get update \
     libxml2-dev \
     libxslt1-dev \
     locales \
-    puppet \
     python3-dev \
     python3-pip \
     python3-venv \
+    gpg \
+    wget \
     sudo
+
+RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg && \
+    apt-get install apt-transport-https && \
+    echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | tee /etc/apt/sources.list.d/elastic-8.x.list && \
+    apt-get update && \
+    apt-get install elasticsearch
 
 ARG USERNAME=github
 
