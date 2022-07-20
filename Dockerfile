@@ -25,6 +25,7 @@ RUN apt-get update \
     puppet \
     python3-dev \
     python3-pip \
+    python3-venv \
     sudo
 
 ARG USERNAME=github
@@ -32,6 +33,9 @@ ARG USERNAME=github
 RUN groupadd --gid 1001 $USERNAME \
   && useradd --uid 1001 --gid $USERNAME --shell /bin/bash --create-home $USERNAME \
   && echo "$USERNAME ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers.d/50-$USERNAME \
+  && apt-get clean autoclean  \
+  && apt-get autoremove --yes  \
+  && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 USER $USERNAME
 CMD ["/bin/sh"]
