@@ -37,11 +37,13 @@ jobs:
             pip install --upgrade pip
             pip install --upgrade setuptools
             pip install -e .
+            ls -l src
       - name: Run pip list
         run: |
             pip list
       - name: Run tools test
         run: |
+            source /__w/action-ci/venv/bin/activate
             bash ./scripts/run_test
 
 
