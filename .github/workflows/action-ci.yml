@@ -26,10 +26,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
-          run: |
-            # This is the main setup job for the test suite
+        run: |
             pip install -r requirements.txt
       - name: Run tools test
-          run: |
+        run: |
             bash ./script/run_test
 
