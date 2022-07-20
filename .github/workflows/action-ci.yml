@@ -31,4 +31,7 @@ jobs:
       - name: Run tools test
         run: |
             bash ./script/run_test
+      - name: echo context
+        run: |
+            echo "$GITHUB_CONTEXT"
 
