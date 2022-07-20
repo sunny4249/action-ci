@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
             pip install -e .
-      - name: Run tools test
+      - name: Run pip list
           run: |
           pip list
       - name: Run tools test
