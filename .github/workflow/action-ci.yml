@@ -1,0 +1,35 @@
+
+name: action CI
+
+on: [push]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - docker_image: sunny4249/ci-action-test:latest
+            name: action (Python 3.8, backend)
+            os: focal
+
+    runs-on: ubuntu-latest
+    name: ${{ matrix.name }}
+    container: ${{ matrix.docker_image }}
+    env:
+      HOME: /opt/action/
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+          run: |
+            # This is the main setup job for the test suite
+            pip install -r requirements.txt
+      - name: Run tools test
+          run: |
+            bash ./script/run_test
+
