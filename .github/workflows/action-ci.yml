@@ -26,7 +26,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: |
-            sudo pip install -e .
+            ls -al
+            pwd
+      - name: Install dependencies
+        run: |
+            pip install -e .
       - name: Run pip list
         run: |
             pip list
