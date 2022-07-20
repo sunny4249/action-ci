@@ -26,17 +26,22 @@ jobs:
         run: |
             ls -al
             pwd
+      - name: Workflow Dispatch
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Install dependencies
         run: |
+            cd ..
+            python3 -m venv /opt/venv
+            source venv/bin/activate
             pip install --upgrade pip
             pip install --upgrade setuptools
             pip install -e .
+            cd action-ci
       - name: Run pip list
         run: |
             pip list
-      - name: echo context
-        run: |
-            echo "$GITHUB_CONTEXT"
       - name: Run tools test
         run: |
             bash ./scripts/run_test
