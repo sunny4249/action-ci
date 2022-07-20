@@ -30,7 +30,7 @@ jobs:
             pip install -r requirements.txt
       - name: Run tools test
         run: |
-            bash ./script/run_test
+            bash ./scripts/run_test
       - name: echo context
         run: |
             echo "$GITHUB_CONTEXT"
