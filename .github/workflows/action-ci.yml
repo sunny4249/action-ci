@@ -39,9 +39,7 @@ jobs:
             pip install -e .
       - name: start elasticsearch
         run: |
-           /bin/systemctl daemon-reload
-           /bin/systemctl enable elasticsearch.service
-           /bin/systemctl start elasticsearch.service
+           service elasticsearch start
       - name: check elasticsearch connection
         run: |
           curl -XGET "http://localhost:9200"
