@@ -32,6 +32,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - name: Install dependencies
         run: |
+            python3 --version
             python3 -m venv /__w/action-ci/venv
             source /__w/action-ci/venv/bin/activate
             pip install --upgrade pip
